@@ -53,7 +53,7 @@ def get_hot_list():
                     break
 
             # 获利账户，并且资金流出超过50%
-            if (-row['netflow_usd'])/row['profit'] > 0.5:
+            if (row['profit']>0) and (-row['netflow_usd'])/row['profit'] > 0.5:
                 flow_out_num = flow_out_num+1
                 if flow_out_num > 5:
                     print('获利资金流出太多')
