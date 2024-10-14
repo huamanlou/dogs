@@ -56,6 +56,7 @@ def get_hot_list():
             if (-row['netflow_usd'])/row['profit'] > 0.5:
                 flow_out_num = flow_out_num+1
                 if flow_out_num > 5:
+                    print('获利资金流出太多')
                     break
 
         if bad_wallet_num >5:
