@@ -9,7 +9,7 @@ def get_hot_list():
     # 持仓人数>
     min_holder_count = 300
     # 市值>
-    min_marketcap = 40000
+    min_marketcap = 60000
 
     data = get_data(f'https://gmgn.ai/defi/quotation/v1/rank/sol/swaps/1h?orderby=swaps&direction=desc&filters[]=renounced&filters[]=frozen&filters[]=distribed&min_marketcap={min_marketcap}&min_holder_count={min_holder_count}')
     # 将 JSON 字符串转换为 Python 对象
@@ -19,7 +19,8 @@ def get_hot_list():
     # print(df['buys'])
     # 小时买单最少数量
     buys = 1000
-    df = df.loc[(df['buys']>df['sells']) & (df['buys']>500)]
+    df = df.loc[(df['buys']>df['sells']) & (df['buys']>buys)]
+    # 小时买单>卖单15倍
     # print(df)
     res_list = []
     for index, item in df.iterrows():
