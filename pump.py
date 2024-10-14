@@ -55,7 +55,7 @@ def get_hot_list():
 
     res_df = pd.DataFrame(res_list)
 
-    print(res_df)
+    print(res_df['address'])
         
 
 
