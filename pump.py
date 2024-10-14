@@ -49,14 +49,14 @@ def get_hot_list():
             if (Decimal(row['usd_value']) > (Decimal(row['netflow_usd']) + Decimal(row['profit'])) *2):
                 bad_wallet_num = bad_wallet_num + 1
                 if bad_wallet_num > 5:
-                    print('庄家子账户太多')
+                    print('too many account')
                     break
 
             # 获利账户，并且资金流出超过50%
             if (row['profit']>0) and (-row['netflow_usd'])/row['profit'] > 0.5:
                 flow_out_num = flow_out_num+1
                 if flow_out_num > 5:
-                    print('获利资金流出太多')
+                    print('too many flow out')
                     break
 
         if bad_wallet_num >5:
